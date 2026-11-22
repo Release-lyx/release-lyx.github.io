@@ -4,17 +4,20 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>Release-lyx的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+  <meta name="description" content="记录CTF,编程，学习笔记">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Release-lyx的博客">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="og:site_name" content="Release-lyx的博客">
+<meta property="og:description" content="记录CTF,编程，学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Release-lyx">
+<meta property="article:tag" content="网络安全">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Release-lyx的博客" type="application/atom+xml">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -42,8 +45,12 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">Release-lyx的博客</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">网安学习记录</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -57,12 +64,12 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
       </div>
     </div>
   </div>
@@ -71,10 +78,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Linux-vim-HelloWorld" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-CSS 知识总结（含网安视角）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2026/11/03/Linux-vim-HelloWorld/" class="article-date">
-  <time class="dt-published" datetime="2026-11-03T03:36:00.000Z" itemprop="datePublished">2026-11-03</time>
+    <a href="/2026/11/14/CSS%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E5%90%AB%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2026-11-13T16:00:00.000Z" itemprop="datePublished">2026-11-14</time>
 </a>
     
   </div>
@@ -85,7 +92,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/11/03/Linux-vim-HelloWorld/">Linux 使用 vim 输出 Hello World</a>
+      <a class="p-name article-title" href="/2026/11/14/CSS%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E5%90%AB%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/">CSS 知识总结（含网安视角）</a>
     </h1>
   
 
@@ -93,19 +100,208 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="实验目标"><a href="#实验目标" class="headerlink" title="实验目标"></a>实验目标</h2><p>在 Linux 使用 vim 编写 C 代码，编译运行输出 <code>hello, world</code></p>
-<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><ol>
-<li>使用 vim 创建代码文件<br>```bash<br>vim hello.ci<br>#include &lt;stdio.h&gt;<br>int main(){<br> printf(“hello, world\n”);<br> return 0;<br>}</li>
+        <blockquote>
+<p>适配黑马前端课程，搭配上面HTML笔记，可直接粘贴Obsidian CSS：层叠样式表，负责给HTML骨架设置外观、布局、颜色、位置；网安中常用来隐藏内容、构造点击劫持、CSS注入、找页面隐藏flag</p>
+</blockquote>
+<h2 id="一、CSS基础概念"><a href="#一、CSS基础概念" class="headerlink" title="一、CSS基础概念"></a>一、CSS基础概念</h2><ol>
+<li>CSS全称：Cascading Style Sheets 层叠样式表</li>
+<li>三大引入方式</li>
 </ol>
+<ul>
+<li>行内样式：写在标签style属性里，优先级最高，不推荐维护</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;color:red&quot;&gt;文字&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>内部样式（当前作业常用）：head标签内写<code>&lt;style&gt;</code>标签</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">选择器&#123;属性:值;&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>外部样式：单独<code>.css</code>文件，link标签引入，项目正式开发使用</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>🛡️网安要点：外部css文件可以单独被访问，部分源码会把提示、隐藏内容写在css内；css文件不会被浏览器当做脚本执行，但是可以用来探测页面元素、判断元素是否存在</p>
+</blockquote>
+<ol start="3">
+<li>语法格式</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">选择器 &#123;</span><br><span class="line">  属性名: 属性值;</span><br><span class="line">  属性名: 属性值;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>层叠（优先级）规则 优先级从低到高： 通配符选择器 &lt; 标签选择器 &lt; 类选择器 &lt; 行内样式 &lt; !important（最高，慎用）<blockquote>
+<p>相同优先级，后面写的样式覆盖前面的</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>🛡️网安要点：开发经常用!important强制样式，审计时看元素样式，开发者工具里划掉的样式就是被更高优先级覆盖的；有些隐藏flag靠高优先级样式遮挡</p>
+</blockquote>
+<h2 id="二、常用选择器（已经学到的）"><a href="#二、常用选择器（已经学到的）" class="headerlink" title="二、常用选择器（已经学到的）"></a>二、常用选择器（已经学到的）</h2><ol>
+<li>通配符选择器 <code>*</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  margin:0;</span><br><span class="line">  padding:0;</span><br><span class="line">  box-sizing:border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>作用：选中页面所有标签，统一清除默认边距，布局必备 2. 标签选择器：<code>div</code>、<code>li</code>、<code>p</code>，选中页面全部对应标签 3. 类选择器 <code>.类名</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;width:1200px;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>html使用：<code>&lt;div class=&quot;box&quot;&gt;&lt;/div&gt;</code> 特点：一个标签可以多个class；最常用布局选择器 4. 后代选择器（空格隔开）：<code>.box div</code>，选中box里面所有div</p>
+<blockquote>
+<p>🛡️网安要点：css选择器可以定位页面里特定元素，早期CSS注入漏洞可以利用选择器读取页面敏感内容</p>
+</blockquote>
+<h2 id="三、基础文字、颜色、背景样式"><a href="#三、基础文字、颜色、背景样式" class="headerlink" title="三、基础文字、颜色、背景样式"></a>三、基础文字、颜色、背景样式</h2><ol>
+<li>文字样式</li>
+</ol>
+<ul>
+<li><code>color</code>：文字颜色（支持英文、十六进制#fff、rgb/rgba）</li>
+<li><code>font-size</code>：字号，单位px</li>
+<li><code>font-weight</code>：加粗，bold加粗，normal正常</li>
+<li><code>text-align</code>：文字对齐 left/center/right</li>
+<li><code>text-decoration</code>：none 去掉下划线（a标签常用）</li>
+</ul>
+<ol start="2">
+<li>背景</li>
+</ol>
+<ul>
+<li><code>background-color</code>：背景色</li>
+<li><code>background-image</code>：背景图片</li>
+<li><code>background-repeat</code>：是否平铺 repeat/no-repeat</li>
+</ul>
+<ol start="3">
+<li>颜色表示 十六进制：<code>#ddd</code>、<code>#ffffff</code> rgb：<code>rgb(255,0,0)</code> rgba：多一个透明度参数，<code>rgba(0,0,0,0.5)</code></li>
+</ol>
+<blockquote>
+<p>🛡️网安要点：rgba透明度、display、visibility是隐藏内容的常用手段；很多CTF题目把flag放在页面，用css隐藏，肉眼看不见，源码存在</p>
+</blockquote>
+<h2 id="四、盒模型（核心重点）"><a href="#四、盒模型（核心重点）" class="headerlink" title="四、盒模型（核心重点）"></a>四、盒模型（核心重点）</h2><p>组成：content内容区 + padding内边距 + border边框 + margin外边距 两种模式</p>
+<ol>
+<li>content-box（默认）：width只代表内容宽度，padding、border会撑大盒子，布局容易错乱</li>
+<li>border-box（布局必写）：width包含内容、padding、border，不会撑大盒子</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-sizing: border-box;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>padding：内边距，盒子内部和边框之间距离，padding:上下 左右</li>
+<li>border：边框 <code>border:1px solid #ddd;</code> 粗细 线型 颜色</li>
+<li>margin：外边距，盒子和外部其他盒子距离<ul>
+<li><code>margin:0 auto;</code> 块级盒子水平居中（高频！只对块级生效，行内无效）<blockquote>
+<p>🛡️网安要点：利用margin负边距、定位偏移，可以把文字移出可视窗口，实现隐藏内容；浏览器开发者工具Computed面板可以查看盒子真实尺寸</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="五、元素显示模式（和HTML标签对应）"><a href="#五、元素显示模式（和HTML标签对应）" class="headerlink" title="五、元素显示模式（和HTML标签对应）"></a>五、元素显示模式（和HTML标签对应）</h2><ol>
+<li>block块级：独占一行，可设置宽高 div h1 p ul</li>
+<li>inline行内：不独占一行，不能直接设置宽高 span a strong</li>
+<li>inline-block行内块：并排，可以设置宽高 img input button 修改显示模式：<code>display:block</code> / <code>display:inline-block</code> / <code>display:none</code></li>
+</ol>
+<ul>
+<li><code>display:none</code>：元素直接消失，不占页面空间</li>
+<li><code>visibility:hidden</code>：元素看不见，但是位置还保留，占用空间<blockquote>
+<p>🛡️网安高频考点： <code>display:none</code> 隐藏元素，F12源码里依然存在；很多CTF题目flag写在display:none标签内； 区分：display:none = 消失不占位；visibility:hidden = 看不见，占位</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="六、Flex弹性布局（你刚练完抖音方案板块）"><a href="#六、Flex弹性布局（你刚练完抖音方案板块）" class="headerlink" title="六、Flex弹性布局（你刚练完抖音方案板块）"></a>六、Flex弹性布局（你刚练完抖音方案板块）</h2><p>开启flex：给父盒子写 <code>display:flex;</code> 核心概念：主轴、侧轴（交叉轴） 默认主轴水平从左到右，侧轴垂直从上到下</p>
+<h3 id="父容器属性（写在父盒子）"><a href="#父容器属性（写在父盒子）" class="headerlink" title="父容器属性（写在父盒子）"></a>父容器属性（写在父盒子）</h3><ol>
+<li>flex-direction：修改主轴方向 row（默认，水平左→右）、row-reverse、column（垂直上→下）、column-reverse</li>
+<li>flex-wrap：是否换行 nowrap（默认，不换行，盒子被挤压）、wrap（空间不足自动换行，作业高频）、wrap-reverse</li>
+<li>justify-content：主轴对齐 flex-start靠左、flex-end靠右、center居中 space-between：两端贴边，中间空隙均分（抖音卡片布局） space-around：两侧留白，两端空隙是中间一半 space-evenly：全部空隙大小一致</li>
+<li>align-items：单行侧轴对齐（没有换行时使用） flex-start靠上、flex-end靠下、center垂直居中、stretch默认拉伸</li>
+<li>align-content：多行侧轴对齐，<strong>必须配合flex-wrap:wrap换行才生效，单行无效</strong> 取值和justify-content一致，控制多行整体分布</li>
+</ol>
+<h3 id="子元素属性（写在子盒子）"><a href="#子元素属性（写在子盒子）" class="headerlink" title="子元素属性（写在子盒子）"></a>子元素属性（写在子盒子）</h3><ol>
+<li>flex:1; 平分父盒子剩余空间，自适应均分宽度</li>
+<li>order:数字，调整排序，数字越小越靠前，默认0，不改HTML调换顺序</li>
+<li>align-self：单独控制某一个子盒子侧轴对齐，不和其他子元素保持一致</li>
+</ol>
+<h3 id="万能flex模板"><a href="#万能flex模板" class="headerlink" title="万能flex模板"></a>万能flex模板</h3><ol>
+<li>盒子内部内容水平+垂直居中</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">  display:flex;</span><br><span class="line">  justify-content:center;</span><br><span class="line">  align-items:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>一行卡片，两端对齐，屏幕小自动换行</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;</span><br><span class="line">  display:flex;</span><br><span class="line">  justify-content:space-between;</span><br><span class="line">  flex-wrap:wrap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>🛡️网安要点：flex布局只是排版，不会改变DOM源码顺序；页面视觉顺序和源码顺序不一致是常见坑，看源码不要只看页面视觉；CSS注入可以搭配flex做元素探测</p>
+</blockquote>
+<h2 id="七、定位-position（了解，后续会练）"><a href="#七、定位-position（了解，后续会练）" class="headerlink" title="七、定位 position（了解，后续会练）"></a>七、定位 position（了解，后续会练）</h2><ul>
+<li>static 默认静态定位，正常文档流</li>
+<li>relative 相对定位：相对于自己原本位置偏移，保留原来位置</li>
+<li>absolute 绝对定位：相对于最近有定位的父盒子，脱离文档流，不占位</li>
+<li>fixed 固定定位：相对于浏览器窗口固定，滚动页面不动 偏移属性：top left right bottom<blockquote>
+<p>🛡️网安重点：点击劫持（ClickJacking）核心原理！ 透明绝对定位iframe盖在正常页面上方，诱导用户点击，看起来点的是正常按钮，实际是点击了iframe内恶意页面。防御：X-Frame-Options响应头，禁止页面被iframe嵌套</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="八、伪类（常用）"><a href="#八、伪类（常用）" class="headerlink" title="八、伪类（常用）"></a>八、伪类（常用）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a:hover &#123;color:red;&#125; /*鼠标悬浮的时候样式*/</span><br></pre></td></tr></table></figure>
+
+<p>常用伪类：hover鼠标悬浮、active点击瞬间、link未访问、visited访问过后</p>
+<blockquote>
+<p>🛡️网安：hover、visited伪类早期被用来探测用户访问历史，现在浏览器已经做防护</p>
+</blockquote>
+<h2 id="九、网安专项CSS知识点（CTF、Web审计重点）"><a href="#九、网安专项CSS知识点（CTF、Web审计重点）" class="headerlink" title="九、网安专项CSS知识点（CTF、Web审计重点）"></a>九、网安专项CSS知识点（CTF、Web审计重点）</h2><ol>
+<li>CSS隐藏flag的几种方式（做题高频）</li>
+</ol>
+<ul>
+<li><code>display:none;</code> 隐藏，不占位</li>
+<li><code>visibility:hidden;</code> 隐藏，占位</li>
+<li><code>opacity:0;</code> 透明度0，看不见，元素可交互</li>
+<li>position定位偏移，<code>left:-9999px;</code> 移出屏幕可视区域</li>
+<li>文字颜色和背景色一模一样 <code>color:#fff;background:#fff;</code><blockquote>
+<p>这类隐藏，页面肉眼看不到，但是HTML源码存在，F12元素面板直接抓到</p>
+</blockquote>
+</li>
+</ul>
+<ol start="2">
+<li>CSS注入（CSS Injection） 前提：可控输入可以拼入CSS代码中 危害：早期可利用选择器、属性读取页面敏感数据；现代浏览器限制比较多，难度高于XSS，CTF小众考点</li>
+<li>点击劫持 ClickJacking CSS绝对定位+透明iframe，防御：后端返回X-Frame-Options: DENY</li>
+<li>样式绕过前端限制 前端用css限制大小、外观，<strong>全部可以F12修改，不能当做安全校验</strong>，安全校验必须后端</li>
+<li>@import 引入外部css，审计时可以追踪import引入的外部资源，排查外链</li>
+</ol>
+<h2 id="十、CSS易错踩坑清单"><a href="#十、CSS易错踩坑清单" class="headerlink" title="十、CSS易错踩坑清单"></a>十、CSS易错踩坑清单</h2><ol>
+<li>符号全部英文半角，中文分号、冒号直接失效</li>
+<li>类选择器css里面写<code>.</code>，html class属性不加<code>.</code></li>
+<li>flex区分：align-items单行；align-content多行（wrap换行才生效）</li>
+<li>margin:0 auto 只对块级元素生效，行内span、a无效</li>
+<li>忘记box-sizing:border-box，padding、border撑大盒子布局错乱</li>
+<li>display:none 和 visibility:hidden 分不清</li>
+<li>flex默认不换行，想要换行必须加 flex-wrap:wrap;</li>
+<li>!important优先级极高，不要随便写，排查样式问题最后看它</li>
+</ol>
+<h2 id="十一、速记口诀"><a href="#十一、速记口诀" class="headerlink" title="十一、速记口诀"></a>十一、速记口诀</h2><p>CSS改样式，三法引入； 选择器有优先级，通配最低行内高； 盒模型分两种，border-box是首选； flex父开display，主轴justify，单行align-items； css能藏内容，肉眼看不见源码留； 前端样式随便改，安全校验放后端。</p>
+<hr>
+<h1 id="CSS复合选择器与隐藏元素"><a href="#CSS复合选择器与隐藏元素" class="headerlink" title="CSS复合选择器与隐藏元素"></a>CSS复合选择器与隐藏元素</h1><h1 id="CSS-复合选择器（Web安全前端基础）"><a href="#CSS-复合选择器（Web安全前端基础）" class="headerlink" title="CSS 复合选择器（Web安全前端基础）"></a>CSS 复合选择器（Web安全前端基础）</h1><blockquote>
+<p>用途：看懂网页源码、CTF隐藏页面、钓鱼页面审计</p>
+</blockquote>
+<h2 id="1-后代选择器（空格）"><a href="#1-后代选择器（空格）" class="headerlink" title="1. 后代选择器（空格）"></a>1. 后代选择器（空格）</h2><p><code>.box span</code><br>匹配 box 里面<strong>所有</strong> span（儿子、孙子都算）</p>
+<h2 id="2-子代选择器（-gt-）"><a href="#2-子代选择器（-gt-）" class="headerlink" title="2. 子代选择器（&gt;）"></a>2. 子代选择器（&gt;）</h2><p><code>.box &gt; span</code><br>只匹配 box 的直接子元素（亲儿子）</p>
+<h2 id="3-并集选择器（逗号-）"><a href="#3-并集选择器（逗号-）" class="headerlink" title="3. 并集选择器（逗号 ,）"></a>3. 并集选择器（逗号 ,）</h2><p><code>h3 , .txt</code><br>同时选中 h3 和 class=txt</p>
+<h2 id="4-交集选择器（紧贴，无空格）"><a href="#4-交集选择器（紧贴，无空格）" class="headerlink" title="4. 交集选择器（紧贴，无空格）"></a>4. 交集选择器（紧贴，无空格）</h2><p><code>div.red</code><br>同时满足：是 div，并且 class 为 red</p>
+<hr>
+<h1 id="隐藏元素（网安高频考点）"><a href="#隐藏元素（网安高频考点）" class="headerlink" title="隐藏元素（网安高频考点）"></a>隐藏元素（网安高频考点）</h1><ol>
+<li><code>display: none</code><br>元素从布局移除，不占位置，肉眼看不见，源码还在。</li>
+<li><code>visibility: hidden</code><br>元素保留占位，只是看不见。</li>
+<li><code>opacity:0</code><br>完全透明，占位，还能点击。</li>
+</ol>
+<blockquote>
+<p>网安场景：flag、隐藏提示、钓鱼页面隐藏内容</p>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/11/03/Linux-vim-HelloWorld/" data-id="cmw1vgkrf0006csulb1y711h9" data-title="Linux 使用 vim 输出 Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2026/11/14/CSS%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E5%90%AB%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/" data-id="cmwrbde4c0000i8ul1qfz2jn7" data-title="CSS 知识总结（含网安视角）" class="article-share-link">分享</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web%E5%AE%89%E5%85%A8/" rel="tag">Web安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
 
     </footer>
   </div>
@@ -115,10 +311,10 @@
 
 
   
-    <article id="post-HTML-CSS-学习总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Flex 布局速记笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2026/11/03/HTML-CSS-%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" class="article-date">
-  <time class="dt-published" datetime="2026-11-03T03:26:40.000Z" itemprop="datePublished">2026-11-03</time>
+    <a href="/2026/11/14/Flex%20%E5%B8%83%E5%B1%80%E9%80%9F%E8%AE%B0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2026-11-13T16:00:00.000Z" itemprop="datePublished">2026-11-14</time>
 </a>
     
   </div>
@@ -129,7 +325,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/11/03/HTML-CSS-%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">HTML &amp; CSS 学习总结</a>
+      <a class="p-name article-title" href="/2026/11/14/Flex%20%E5%B8%83%E5%B1%80%E9%80%9F%E8%AE%B0%E7%AC%94%E8%AE%B0/">Flex 布局速记笔记</a>
     </h1>
   
 
@@ -137,27 +333,77 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><p>负责网页结构，搭骨架。</p>
-<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><p>负责样式，美化页面。</p>
-<h3 id="重点（网安方向留意）"><a href="#重点（网安方向留意）" class="headerlink" title="重点（网安方向留意）"></a>重点（网安方向留意）</h3><ul>
-<li><code>display:none</code>：元素直接从布局移除，看不见、不占位置</li>
-<li><code>visibility:hidden</code>：看不见，但是仍然占据页面空间</li>
-<li>复合选择器：后代、子代、交集、并集</li>
+        <blockquote>
+<p>核心：给父盒子加 <code>display: flex;</code>，<strong>控制子元素</strong>的排列，分为【主轴】和【侧轴（交叉轴）】 默认：主轴=水平（从左→右），侧轴=垂直（从上→下）</p>
+</blockquote>
+<h2 id="一、父容器（加在父盒子上）"><a href="#一、父容器（加在父盒子上）" class="headerlink" title="一、父容器（加在父盒子上）"></a>一、父容器（加在父盒子上）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.father &#123;</span><br><span class="line">  display: flex; /* 开启flex布局，必写 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-flex-direction-👉-修改主轴方向"><a href="#1-flex-direction-👉-修改主轴方向" class="headerlink" title="1. flex-direction 👉 修改主轴方向"></a>1. flex-direction 👉 修改主轴方向</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">flex-direction: row;          /* 默认，主轴水平，左→右 */</span><br><span class="line">flex-direction: row-reverse; /* 水平反向，右→左 */</span><br><span class="line">flex-direction: column;      /* 主轴垂直，上→下 */</span><br><span class="line">flex-direction: column-reverse; /* 垂直反向，下→上 */</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-flex-wrap-👉-是否换行（重点！）"><a href="#2-flex-wrap-👉-是否换行（重点！）" class="headerlink" title="2. flex-wrap 👉 是否换行（重点！）"></a>2. flex-wrap 👉 是否换行（重点！）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flex-wrap: nowrap; /* 默认：不换行，子盒子会被挤压缩小 */</span><br><span class="line">flex-wrap: wrap;   /* 空间不够就自动换行（你抖音案例用的这个） */</span><br><span class="line">flex-wrap: wrap-reverse; /* 换行并且行颠倒 */</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-justify-content-👉-主轴对齐（最常用）"><a href="#3-justify-content-👉-主轴对齐（最常用）" class="headerlink" title="3. justify-content 👉 主轴对齐（最常用）"></a>3. justify-content 👉 主轴对齐（最常用）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">justify-content: flex-start;    /* 默认：靠左 */</span><br><span class="line">justify-content: flex-end;      /* 靠右 */</span><br><span class="line">justify-content: center;       /* 居中 */</span><br><span class="line">justify-content: space-between;/* 两端贴边，中间空隙平分（高频！） */</span><br><span class="line">justify-content: space-around;   /* 每个盒子左右都有空隙，两端空隙是中间一半 */</span><br><span class="line">justify-content: space-evenly;  /* 所有空隙（包含左右两边）大小完全相等 */</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-align-items-👉-侧轴对齐（单行的时候用！）"><a href="#4-align-items-👉-侧轴对齐（单行的时候用！）" class="headerlink" title="4. align-items 👉 侧轴对齐（单行的时候用！）"></a>4. align-items 👉 侧轴对齐（单行的时候用！）</h3><blockquote>
+<p>单行、没有换行，用这个</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">align-items: flex-start; /* 靠上 */</span><br><span class="line">align-items: flex-end;   /* 靠下 */</span><br><span class="line">align-items: center;     /* 垂直居中（超级常用） */</span><br><span class="line">align-items: stretch;     /* 默认，子盒子高度拉伸填满父盒子 */</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-align-content-👉-多行侧轴对齐（⚠️必须配合-wrap-换行！）"><a href="#5-align-content-👉-多行侧轴对齐（⚠️必须配合-wrap-换行！）" class="headerlink" title="5. align-content 👉 多行侧轴对齐（⚠️必须配合 wrap 换行！）"></a>5. align-content 👉 多行侧轴对齐（⚠️必须配合 wrap 换行！）</h3><blockquote>
+<p>只有子元素换行了、出现多行，这条才生效！单行无效</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">align-content: flex-start; /* 多行整体靠上 */</span><br><span class="line">align-content: flex-end;   /* 多行整体靠下 */</span><br><span class="line">align-content: center;     /* 多行整体垂直居中 */</span><br><span class="line">align-content: space-between; /* 多行上下贴边，行之间空隙均分 */</span><br><span class="line">align-content: space-around;</span><br><span class="line">align-content: space-evenly;</span><br><span class="line">align-content: stretch;    /* 默认拉伸 */</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、子元素属性（写在子div上）"><a href="#二、子元素属性（写在子div上）" class="headerlink" title="二、子元素属性（写在子div上）"></a>二、子元素属性（写在子div上）</h2><h3 id="1-flex-弹性伸缩（简写）"><a href="#1-flex-弹性伸缩（简写）" class="headerlink" title="1. flex 弹性伸缩（简写）"></a>1. flex 弹性伸缩（简写）</h3><p><code>flex: 1;</code> 👉 平分剩余空间，自适应宽度（卡片均分神器）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flex: 数字;  /* flex: 1 代表占1份 */</span><br><span class="line">/* 完整展开：flex: flex-grow flex-shrink flex-basis; */</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>flex-grow</code>：放大比例，默认0，有多余空间才放大</li>
+<li><code>flex-shrink</code>：缩小比例，默认1，空间不够会缩小</li>
+<li><code>flex-basis</code>：基础宽度，默认auto</li>
 </ul>
-<h3 id="权重口诀"><a href="#权重口诀" class="headerlink" title="权重口诀"></a>权重口诀</h3><p>id（100）&gt; class（10）&gt; 标签（1）</p>
-<h3 id="易错点"><a href="#易错点" class="headerlink" title="易错点"></a>易错点</h3><ul>
-<li>权重不是数字直接相加进位，是从左往右依次比较</li>
-<li><code>background-image</code> 背景图，和 <code>&lt;img&gt;</code> 图片标签用途不一样</li>
-</ul>
+<h3 id="2-align-self-👉-单独控制某一个子盒子侧轴对齐"><a href="#2-align-self-👉-单独控制某一个子盒子侧轴对齐" class="headerlink" title="2. align-self 👉 单独控制某一个子盒子侧轴对齐"></a>2. align-self 👉 单独控制某一个子盒子侧轴对齐</h3><p>可以不和其他子盒子保持一致，单独设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">align-self: center;</span><br><span class="line">align-self: flex-start;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-order-👉-排序"><a href="#3-order-👉-排序" class="headerlink" title="3. order 👉 排序"></a>3. order 👉 排序</h3><p><code>order: 数字;</code> 默认0，数字越小，排得越靠前（可以不改HTML，调换顺序）</p>
+<h2 id="三、高频组合模板（直接抄作业）"><a href="#三、高频组合模板（直接抄作业）" class="headerlink" title="三、高频组合模板（直接抄作业）"></a>三、高频组合模板（直接抄作业）</h2><ol>
+<li>水平+垂直居中（万能居中）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  align-items: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>一行多个盒子，左右贴边，中间自动空隙（抖音方案板块）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: space-between;</span><br><span class="line">  flex-wrap: wrap; /* 屏幕小自动换行 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>垂直方向排列、居中</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  flex-direction: column;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  align-items: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、易错踩坑清单（你之前踩过的！）"><a href="#四、易错踩坑清单（你之前踩过的！）" class="headerlink" title="四、易错踩坑清单（你之前踩过的！）"></a>四、易错踩坑清单（你之前踩过的！）</h2><ol>
+<li>✅ <code>justify-content</code> 管主轴；<code>align-items</code> 管单行侧轴；<code>align-content</code> 只管多行（wrap换行后）</li>
+<li>✅ flex 布局<strong>子元素默认不换行</strong>，想换行一定要加 <code>flex-wrap: wrap;</code></li>
+<li>✅ 父盒子写 <code>display:flex</code>，属性是给父的；<code>flex:1</code>、<code>order</code> 这些是给子盒子</li>
+<li>✅ 通配符重置样式别漏 <code>*</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  margin: 0;</span><br><span class="line">  padding: 0;</span><br><span class="line">  box-sizing: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>✅ 标签class要对应，写了<code>.box</code>样式，body里必须有 <code>&lt;div class=&quot;box&quot;&gt;</code>，不然看不到盒子</li>
+</ol>
+<h2 id="五、一句话速记口诀"><a href="#五、一句话速记口诀" class="headerlink" title="五、一句话速记口诀"></a>五、一句话速记口诀</h2><blockquote>
+<p>父开flex，定主轴，主轴justify，单行align-items，多行align-content； 子元素flex用来分空间，order调顺序，align-self单独改。</p>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/11/03/HTML-CSS-%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" data-id="cmw1vgkr80000csul1olh5f06" data-title="HTML &amp; CSS 学习总结" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2026/11/14/Flex%20%E5%B8%83%E5%B1%80%E9%80%9F%E8%AE%B0%E7%AC%94%E8%AE%B0/" data-id="cmwrbde4g0001i8ul7xse2ou6" data-title="Flex 布局速记笔记" class="article-share-link">分享</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web%E5%AE%89%E5%85%A8/" rel="tag">Web安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flex/" rel="tag">Flex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web%E5%AE%89%E5%85%A8/" rel="tag">Web安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
 
     </footer>
   </div>
@@ -167,10 +413,10 @@
 
 
   
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-HTML 知识总结（网安视角）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2026/11/03/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2026-11-03T03:23:08.883Z" itemprop="datePublished">2026-11-03</time>
+    <a href="/2026/11/14/HTML%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2026-11-13T16:00:00.000Z" itemprop="datePublished">2026-11-14</time>
 </a>
     
   </div>
@@ -181,7 +427,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/11/03/hello-world/">Hello World</a>
+      <a class="p-name article-title" href="/2026/11/14/HTML%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/">HTML 知识总结（网安视角）</a>
     </h1>
   
 
@@ -189,27 +435,403 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <hr>
+<h1 id="HTML-知识总结（含网安视角）"><a href="#HTML-知识总结（含网安视角）" class="headerlink" title="HTML 知识总结（含网安视角）"></a>HTML 知识总结（含网安视角）</h1><blockquote>
+<p>适用：黑马前端课程 HTML 阶段 + 网安/CTF Web 方向 定位：前端做页面用 HTML 搭骨架；网安看页面源码、找漏洞也靠它</p>
+</blockquote>
+<hr>
+<h2 id="一、HTML-是什么"><a href="#一、HTML-是什么" class="headerlink" title="一、HTML 是什么"></a>一、HTML 是什么</h2><ul>
+<li>HTML = 超文本标记语言，<strong>不是编程语言</strong>，只是用“标签”把内容包起来</li>
+<li>网页三件套：<ul>
+<li>HTML：骨架（有哪些内容）</li>
+<li>CSS：皮肤（长什么样）</li>
+<li>JavaScript：肌肉（能做什么交互）</li>
+</ul>
+</li>
+<li>浏览器做事的两步：<ol>
+<li>先拿到 HTML 文本（源码）</li>
+<li>再按标签规则渲染成页面（你看到的样子）</li>
+</ol>
+</li>
+</ul>
+<blockquote>
+<p>🛡️ <strong>网安要点</strong>：你在页面上看到的 ≠ 源码里的全部内容。被隐藏、被注释、在属性里的东西，浏览器不一定显示，但源码里都在。CTF Web 题第一步永远是“看源码”。</p>
+</blockquote>
+<hr>
+<h2 id="二、标准骨架（输入-Tab-一键生成）"><a href="#二、标准骨架（输入-Tab-一键生成）" class="headerlink" title="二、标准骨架（输入 ! + Tab 一键生成）"></a>二、标准骨架（输入 <code>!</code> + Tab 一键生成）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;zh-CN&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;网页标题&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;!-- 页面看得见的内容写在这里 --&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>逐行解释：</p>
+<table>
+<thead>
+<tr>
+<th>行</th>
+<th>作用</th>
+<th>记法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;!DOCTYPE html&gt;</code></td>
+<td>声明这是 HTML5 文档，必须第一行</td>
+<td>不写会进入怪异模式，样式可能错乱</td>
+</tr>
+<tr>
+<td><code>&lt;html&gt;</code></td>
+<td>整个网页的根标签</td>
+<td>一个页面只有一个</td>
+</tr>
+<tr>
+<td><code>&lt;head&gt;</code></td>
+<td>配置区，页面看不见</td>
+<td>编码、标题、引入 CSS 都写这里</td>
+</tr>
+<tr>
+<td><code>&lt;meta charset=&quot;UTF-8&quot;&gt;</code></td>
+<td>设置文字编码，防中文乱码</td>
+<td>必须写，写错中文变乱码</td>
+</tr>
+<tr>
+<td><code>&lt;meta name=&quot;viewport&quot;&gt;</code></td>
+<td>移动端适配</td>
+<td>做手机端页面必备</td>
+</tr>
+<tr>
+<td><code>&lt;title&gt;</code></td>
+<td>浏览器标签页上的标题</td>
+<td>搜索引擎、收藏夹用的就是它</td>
+</tr>
+<tr>
+<td><code>&lt;body&gt;</code></td>
+<td>页面上看得见的所有内容</td>
+<td>布局都在这写</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>🛡️ <strong>网安要点</strong>：<code>&lt;title&gt;</code> 和 <code>&lt;meta&gt;</code> 会被搜索引擎、爬虫抓走；有人会在 <code>meta</code> 里塞隐藏提示（CTF 常见）。<code>robots.txt</code>、<code>sitemap</code> 常和这些配置一起被用来做信息收集。</p>
+</blockquote>
+<hr>
+<h2 id="三、注释"><a href="#三、注释" class="headerlink" title="三、注释"></a>三、注释</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 单行注释 --&gt;</span><br><span class="line">&lt;!--</span><br><span class="line">  多行注释</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<ul>
+<li>快捷键：VS Code 里 <code>Ctrl + /</code></li>
+<li>注释<strong>不会被渲染</strong>，但<strong>会原样出现在源码里</strong></li>
+</ul>
+<blockquote>
+<p>🛡️ <strong>网安要点（高频考点）</strong>：开发者习惯把测试账号、内网地址、接口路径、TODO、备份文件名写在注释里，忘了删。</p>
+<ul>
+<li>CTF 里常见：注释里藏 flag、藏下一步的路径、藏提示</li>
+<li>真实站点：注释泄露后台地址、数据库名、内部接口</li>
+<li>位置：<code>Ctrl + U</code> 看源码后，搜 <code>&lt;!--</code>，或在开发者工具 Elements 面板里看灰色内容</li>
+<li>防御角度：上线前统一清理注释，敏感配置放服务端，不写在前端</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="四、标签分类（最重要的一张表）"><a href="#四、标签分类（最重要的一张表）" class="headerlink" title="四、标签分类（最重要的一张表）"></a>四、标签分类（最重要的一张表）</h2><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>代表标签</th>
+<th>特点</th>
+<th>能否设宽高</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>块级元素</td>
+<td><code>div</code> <code>h1~h6</code> <code>p</code> <code>ul</code> <code>li</code> <code>table</code></td>
+<td>独占一行，宽度默认撑满父盒子</td>
+<td>✅ 能</td>
+</tr>
+<tr>
+<td>行内元素</td>
+<td><code>span</code> <code>a</code> <code>strong</code> <code>em</code></td>
+<td>不独占一行，多个能并排</td>
+<td>❌ 不能（设了也不生效）</td>
+</tr>
+<tr>
+<td>行内块元素</td>
+<td><code>img</code> <code>input</code> <code>button</code></td>
+<td>不独占一行，但能设宽高</td>
+<td>✅ 能</td>
+</tr>
+</tbody></table>
+<p>记法：</p>
+<ul>
+<li>要“占一整行、能当容器” → <code>div</code></li>
+<li>要“给一小段文字单独上色/加样式” → <code>span</code></li>
+<li>常见坑：给 <code>span</code> 写 <code>width:200px;</code> 没反应，就是因为它不能设宽高</li>
+</ul>
+<blockquote>
+<p>🛡️ <strong>网安要点</strong>：<code>div</code> 套 <code>div</code>、<code>span</code> 套 <code>span</code> 的结构，是看页面结构时最常打交道的。开发者工具的 Elements 面板就是一棵标签树，能一层层展开，是前端审计、找隐藏节点的主要工具。</p>
+</blockquote>
+<hr>
+<h2 id="五、文本类标签"><a href="#五、文本类标签" class="headerlink" title="五、文本类标签"></a>五、文本类标签</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;一级标题（一个页面只写一个）&lt;/h1&gt;</span><br><span class="line">&lt;h2&gt;二级标题&lt;/h2&gt;</span><br><span class="line">&lt;h6&gt;六级标题（最小）&lt;/h6&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;段落，自带上下间距&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">第一行&lt;br&gt;第二行        &lt;!-- 换行，单标签 --&gt;</span><br><span class="line">&lt;hr&gt;                     &lt;!-- 水平分割线，单标签 --&gt;</span><br><span class="line"></span><br><span class="line">&lt;strong&gt;加粗，表示重要&lt;/strong&gt;</span><br><span class="line">&lt;b&gt;加粗，只是变粗&lt;/b&gt;</span><br><span class="line"></span><br><span class="line">&lt;em&gt;倾斜，表示强调&lt;/em&gt;</span><br><span class="line">&lt;i&gt;倾斜，只是斜体&lt;/i&gt;</span><br><span class="line"></span><br><span class="line">&lt;u&gt;下划线&lt;/u&gt;</span><br><span class="line">&lt;s&gt;删除线&lt;/s&gt;</span><br><span class="line"></span><br><span class="line">H&lt;sub&gt;2&lt;/sub&gt;O          &lt;!-- 下标 --&gt;</span><br><span class="line">2&lt;sup&gt;3&lt;/sup&gt;           &lt;!-- 上标 --&gt;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>&lt;h1&gt;</code> 一个页面只写一个，是 SEO 权重最高的标题</li>
+<li><code>strong</code> / <code>em</code> 有“语义”（表示重要/强调），<code>b</code> / <code>i</code> 只有外观，考试常考区别</li>
+</ul>
+<blockquote>
+<p>🛡️ <strong>网安要点</strong>：<code>&lt;h1&gt;</code> 里的关键词会被搜索引擎重点抓取，这是 SEO 层面的东西；而 <code>&lt;strong&gt;</code> 这类“有语义”的标签，正是前端代码规范审计时会看的东西——不同团队规范不同，审计报告里会写“语义化是否规范”。</p>
+</blockquote>
+<hr>
+<h2 id="六、特殊字符（HTML-实体）"><a href="#六、特殊字符（HTML-实体）" class="headerlink" title="六、特殊字符（HTML 实体）"></a>六、特殊字符（HTML 实体）</h2><p>有些符号在 HTML 里有特殊含义，必须“转义”才能显示：</p>
+<table>
+<thead>
+<tr>
+<th>想显示</th>
+<th>写什么</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;</code></td>
+<td><code>&amp;lt;</code></td>
+<td>小于号是标签的开始，必须转义</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td><code>&amp;gt;</code></td>
+<td>大于号</td>
+</tr>
+<tr>
+<td><code>&amp;</code></td>
+<td><code>&amp;amp;</code></td>
+<td>与号</td>
+</tr>
+<tr>
+<td>空格（连续多个）</td>
+<td><code>&amp;nbsp;</code></td>
+<td>普通空格会被合并成一个</td>
+</tr>
+<tr>
+<td>版权</td>
+<td><code>&amp;copy;</code></td>
+<td>©</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>🛡️ <strong>网安要点（XSS 的根）</strong>：浏览器看到 <code>&lt;</code> 会当成标签开始，看到 <code>&amp;lt;</code> 只会当成普通文字。</p>
+<ul>
+<li>后端把用户输入原样拼进 HTML 时，如果输入里的 <code>&lt;script&gt;</code> 没被转义，浏览器就会真的执行它——这就是 <strong>XSS（跨站脚本）</strong> 的核心原理</li>
+<li><strong>防御</strong>：输出到页面时做 HTML 实体编码（<code>&lt;</code> → <code>&amp;lt;</code>），输入侧做过滤</li>
+<li>判断点：一个页面把用户输入回显出来，就是潜在 XSS 点（搜索框回显、留言板、个人昵称、URL 参数）</li>
+<li>考试常问：<code>&amp;lt;script&amp;gt;</code> 会不会执行？答案：不会，它只是文字</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="七、图片标签"><a href="#七、图片标签" class="headerlink" title="七、图片标签"></a>七、图片标签</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;图片路径&quot; alt=&quot;图片加载失败时的文字&quot; title=&quot;鼠标悬停提示&quot;&gt;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<ul>
+<li>单标签，不需要闭合</li>
+<li><code>src</code>：图片地址（本地路径 / 网址都行）</li>
+<li><code>alt</code>：图挂了显示的文字，也是搜索引擎读图依据</li>
+<li>宽高一般用 CSS 设，不要写死</li>
+</ul>
+<blockquote>
+<p>🛡️ <strong>网安要点</strong>：</p>
+<ul>
+<li><code>alt</code> 和文件名会泄露信息（比如 <code>admin后台截图.png</code>），信息收集时图片名也在收集范围里</li>
+<li><code>&lt;img src&gt;</code> 能发起外部请求，所以历史上被用来做“图片探测”和 CSRF 辅助（加载即请求）</li>
+<li>防御角度：图片走独立域名/图床、文件名重命名去语义化</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="八、超链接"><a href="#八、超链接" class="headerlink" title="八、超链接"></a>八、超链接</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;[https://www.baidu.com](https://www.baidu.com)&quot; target=&quot;_blank&quot;&gt;百度&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;mailto:xx@qq.com&quot;&gt;发邮件&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;tel:110&quot;&gt;打电话&lt;/a&gt;</span><br><span class="line">&lt;a href=&quot;#&quot;&gt;空链接（回到顶部）&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>target=&quot;_blank&quot;</code>：新窗口打开</li>
+<li><code>#</code>：占位链接，还没想好跳哪时用</li>
+</ul>
+<blockquote>
+<p>🛡️ <strong>网安要点</strong>：</p>
+<ul>
+<li><code>javascript:</code> 伪协议可以在链接里塞脚本，属于 XSS 的一种入口（防御：白名单校验 <code>href</code>）</li>
+<li><code>target=&quot;_blank&quot;</code> 老版本有 <code>window.opener</code> 劫持问题（防御：加 <code>rel=&quot;noopener noreferrer&quot;</code>）</li>
+<li>钓鱼类题里，链接文字和真实 <code>href</code> 不一致是常见陷阱：<strong>永远看 href，不看文字</strong></li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="九、列表"><a href="#九、列表" class="headerlink" title="九、列表"></a>九、列表</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 无序列表（最常用） --&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;第一项&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;第二项&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 有序列表 --&gt;</span><br><span class="line">&lt;ol&gt;</span><br><span class="line">    &lt;li&gt;第一步&lt;/li&gt;</span><br><span class="line">    &lt;li&gt;第二步&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+
+<p>去掉前面小圆点：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">li &#123;</span><br><span class="line">    list-style: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实际开发里，导航栏、卡片列表都是 <code>ul &gt; li</code> 结构（不是纯 div）</li>
+</ul>
+<blockquote>
+<p>🛡️ <strong>网安要点</strong>：后台菜单、权限入口常见 <code>ul &gt; li</code>；题目给你一个“用户菜单”，管理员那一项可能是被隐藏的 <code>li</code>（<code>display:none</code> 或注释掉），点不开但源码在。</p>
+</blockquote>
+<hr>
+<h2 id="十、表格"><a href="#十、表格" class="headerlink" title="十、表格"></a>十、表格</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=&quot;1&quot;&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;th&gt;姓名&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;年龄&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;张三&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;18&lt;/td&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>table</code> 表格 / <code>tr</code> 行 / <code>th</code> 表头单元格 / <code>td</code> 普通单元格</li>
+<li>合并单元格：<code>colspan</code>（跨列）、<code>rowspan</code>（跨行）</li>
+<li>现在页面布局<strong>不用表格</strong>了（老网页才用），但<strong>表格标签本身还在用</strong>（数据展示）</li>
+</ul>
+<blockquote>
+<p>🛡️ <strong>网安要点</strong>：老站点（政府、企业后台）大量用 <code>table</code> 布局，这类站点的 HTML 结构往往很乱、注释多、参数命名随意，审计时反而容易找到问题。看到 <code>table</code> 布局基本能判断站点较老。</p>
+</blockquote>
+<hr>
+<h2 id="十一、表单（网安最重要的一节）"><a href="#十一、表单（网安最重要的一节）" class="headerlink" title="十一、表单（网安最重要的一节）"></a>十一、表单（网安最重要的一节）</h2><p>表单就是“用户填东西、提交给服务器”的容器。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;login.php&quot; method=&quot;post&quot;&gt;</span><br><span class="line">    ...</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>作用</th>
+<th>网安意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>action</code></td>
+<td>数据提交给哪个地址</td>
+<td>直接暴露后端接口路径</td>
+</tr>
+<tr>
+<td><code>method</code></td>
+<td>提交方式 <code>get</code> / <code>post</code></td>
+<td>决定参数在 URL 还是请求体里</td>
+</tr>
+</tbody></table>
+<h3 id="11-1-输入框"><a href="#11-1-输入框" class="headerlink" title="11.1 输入框"></a>11.1 输入框</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; name=&quot;username&quot; placeholder=&quot;请输入用户名&quot;&gt;</span><br><span class="line">&lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>name</code> <strong>必须有</strong>，没有 name 后端收不到这个值</li>
+<li><code>type=&quot;password&quot;</code> 只是显示成圆点，<strong>不代表加密</strong></li>
+</ul>
+<h3 id="11-2-单选-多选"><a href="#11-2-单选-多选" class="headerlink" title="11.2 单选 / 多选"></a>11.2 单选 / 多选</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 单选：同一组 name 必须一样 --&gt;</span><br><span class="line">&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;1&quot;&gt; 男</span><br><span class="line">&lt;input type=&quot;radio&quot; name=&quot;gender&quot; value=&quot;2&quot;&gt; 女</span><br><span class="line"></span><br><span class="line">&lt;!-- 多选 --&gt;</span><br><span class="line">&lt;input type=&quot;checkbox&quot; name=&quot;hobby&quot; value=&quot;ball&quot;&gt; 打球</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>value</code> 才是真正提交上去的值，页面上写的“男/女”只是给人看的</li>
+</ul>
+<h3 id="11-3-文件上传"><a href="#11-3-文件上传" class="headerlink" title="11.3 文件上传"></a>11.3 文件上传</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=&quot;upload.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;file&quot; name=&quot;file&quot;&gt;</span><br><span class="line">    &lt;button&gt;上传&lt;/button&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>**必须写 <code>enctype=&quot;multipart/form-data&quot;</code>**，不写文件传不上去</li>
+</ul>
+<blockquote>
+<p>🛡️ <strong>网安要点（文件上传漏洞）</strong>：</p>
+<ul>
+<li>上传点是最经典的高危入口之一，核心问题是“服务端有没有校验类型/后缀/内容”</li>
+<li>防御三件套：白名单校验后缀、校验文件真实类型（不看 Content-Type，看文件头）、上传目录不能解析执行脚本、文件重命名</li>
+<li>学习顺序上，这个知识点等学到文件上传漏洞再深入，现在先记住“看到 file 表单就要多看一眼”</li>
+</ul>
+</blockquote>
+<h3 id="11-4-下拉框-文本域"><a href="#11-4-下拉框-文本域" class="headerlink" title="11.4 下拉框 / 文本域"></a>11.4 下拉框 / 文本域</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;select name=&quot;city&quot;&gt;</span><br><span class="line">    &lt;option value=&quot;1&quot;&gt;北京&lt;/option&gt;</span><br><span class="line">    &lt;option value=&quot;2&quot;&gt;上海&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br><span class="line">&lt;textarea name=&quot;content&quot; rows=&quot;5&quot; cols=&quot;30&quot;&gt;&lt;/textarea&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-5-按钮"><a href="#11-5-按钮" class="headerlink" title="11.5 按钮"></a>11.5 按钮</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">&lt;button type=&quot;submit&quot;&gt;提交&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-6-label（点文字也能选中输入框）"><a href="#11-6-label（点文字也能选中输入框）" class="headerlink" title="11.6 label（点文字也能选中输入框）"></a>11.6 label（点文字也能选中输入框）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;label for=&quot;user&quot;&gt;用户名&lt;/label&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; id=&quot;user&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>label</code> 的 <code>for</code> 要等于 input 的 <code>id</code></li>
+</ul>
+<h3 id="🔑-表单里网安必记的-5-个点"><a href="#🔑-表单里网安必记的-5-个点" class="headerlink" title="🔑 表单里网安必记的 5 个点"></a>🔑 表单里网安必记的 5 个点</h3><ol>
+<li><strong><code>name</code> 属性 = 后端参数名</strong>。抓包看到的 <code>username=xxx&amp;password=xxx</code>，对应的就是这两个 name</li>
+<li><strong>GET vs POST</strong>：<ul>
+<li>GET：参数拼在 URL 上，<code>?a=1&amp;b=2</code>，能被看到、被记录在日志、能直接改 URL 试</li>
+<li>POST：参数在请求体里，URL 上看不到，要用抓包工具看</li>
+<li>注意：POST 只是“不显示在 URL”，<strong>不加密、不防篡改</strong>，抓包一样能改</li>
+</ul>
+</li>
+<li>**隐藏字段 <code>type=&quot;hidden&quot;</code>**： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;hidden&quot; name=&quot;role&quot; value=&quot;user&quot;&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>页面上看不见，但会提交</li>
+<li>如果后端直接信这个值，把 <code>value</code> 改成 <code>admin</code> 就能越权——这是最经典的越权/水平垂直越权考点</li>
+</ul>
+</li>
+<li><strong>前端校验不等于安全</strong>：<code>maxlength</code>、<code>required</code>、JS 校验都能绕过（改源码、抓包重发）。<strong>所有校验必须在服务端再做一遍</strong></li>
+<li><strong><code>action</code> 泄露接口</strong>：很多站点的真实接口就写在 form 的 action 里，比猜路径快得多</li>
+</ol>
+<hr>
+<h2 id="十二、语义化标签（HTML5-新增）"><a href="#十二、语义化标签（HTML5-新增）" class="headerlink" title="十二、语义化标签（HTML5 新增）"></a>十二、语义化标签（HTML5 新增）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;header&gt; 头部 &lt;/header&gt;</span><br><span class="line">&lt;nav&gt; 导航 &lt;/nav&gt;</span><br><span class="line">&lt;main&gt; 主体内容 &lt;/main&gt;</span><br><span class="line">&lt;section&gt; 区块 &lt;/section&gt;</span><br><span class="line">&lt;article&gt; 文章 &lt;/article&gt;</span><br><span class="line">&lt;aside&gt; 侧边栏 &lt;/aside&gt;</span><br><span class="line">&lt;footer&gt; 底部 &lt;/footer&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>作用和 <code>div</code> 一样，只是名字有意义，方便人和搜索引擎理解</li>
+<li>黑马课程里“网页项目”部分：header / banner / footer 就是这么分区的</li>
+</ul>
+<hr>
+<h2 id="十三、🛡️-网安视角总汇总（这一节单独背）"><a href="#十三、🛡️-网安视角总汇总（这一节单独背）" class="headerlink" title="十三、🛡️ 网安视角总汇总（这一节单独背）"></a>十三、🛡️ 网安视角总汇总（这一节单独背）</h2><h3 id="1-拿到一个网页，按这个顺序看"><a href="#1-拿到一个网页，按这个顺序看" class="headerlink" title="1. 拿到一个网页，按这个顺序看"></a>1. 拿到一个网页，按这个顺序看</h3><ol>
+<li><code>Ctrl + U</code>（或右键“查看源代码”）→ 看<strong>原始源码</strong>，能看注释</li>
+<li><code>F12</code> → Elements 面板 → 看<strong>渲染后的结构</strong>，能看到被 JS 改过的内容</li>
+<li>差异很重要：源码里有但页面没显示 = 隐藏内容；源码里没有但页面有 = JS 生成的</li>
+</ol>
+<h3 id="2-HTML-层面常见的信息泄露点"><a href="#2-HTML-层面常见的信息泄露点" class="headerlink" title="2. HTML 层面常见的信息泄露点"></a>2. HTML 层面常见的信息泄露点</h3><table>
+<thead>
+<tr>
+<th>位置</th>
+<th>泄露什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>注释 <code>&lt;!-- --&gt;</code></td>
+<td>测试账号、内网地址、备份路径、TODO、flag</td>
+</tr>
+<tr>
+<td><code>type=&quot;hidden&quot;</code></td>
+<td>权限标记、价格、用户 id —— 可篡改</td>
+</tr>
+<tr>
+<td><code>form action</code></td>
+<td>后端接口路径、参数格式</td>
+</tr>
+<tr>
+<td><code>meta</code> 标签</td>
+<td>框架版本、隐藏提示</td>
+</tr>
+<tr>
+<td>标签属性（<code>data-*</code>、<code>id</code>、<code>class</code>）</td>
+<td>业务含义、内部命名、接口暗示</td>
+</tr>
+<tr>
+<td>图片文件名 / <code>alt</code></td>
+<td>内部系统截图、后台名字</td>
+</tr>
+<tr>
+<td>被注释掉的整块代码</td>
+<td>废弃但可能还能访问的接口</td>
+</tr>
+</tbody></table>
+<h3 id="3-和-HTML-直接相关的漏洞类型"><a href="#3-和-HTML-直接相关的漏洞类型" class="headerlink" title="3. 和 HTML 直接相关的漏洞类型"></a>3. 和 HTML 直接相关的漏洞类型</h3><ul>
+<li><strong>XSS（跨站脚本）</strong>：用户输入没转义就被当标签执行。HTML 视角看，就是 <code>&lt;</code> 没变成 <code>&amp;lt;</code></li>
+<li><strong>CSRF（跨站请求伪造）</strong>：借你已登录的身份，自动提交一个表单/请求。form 的自动提交能力就是基础</li>
+<li><strong>点击劫持</strong>：用透明层盖住页面骗你点击，和 CSS 的 <code>opacity</code> / 定位强相关</li>
+<li><strong>越权</strong>：篡改 <code>hidden</code> 字段或参数值，拿到不该有的权限</li>
+<li><strong>文件上传</strong>：<code>enctype=&quot;multipart/form-data&quot;</code> 的表单是入口</li>
+<li><strong>信息泄露</strong>：注释、<code>meta</code>、<code>action</code> 把内部信息拱手送出</li>
+</ul>
+<h3 id="4-一句话原则"><a href="#4-一句话原则" class="headerlink" title="4. 一句话原则"></a>4. 一句话原则</h3><blockquote>
+<p><strong>前端的一切都能被看到、被修改。所以：前端只负责体验，安全校验必须在服务端。</strong></p>
+</blockquote>
+<hr>
+<h2 id="十四、易错踩坑清单"><a href="#十四、易错踩坑清单" class="headerlink" title="十四、易错踩坑清单"></a>十四、易错踩坑清单</h2><ol>
+<li>标签忘记闭合：<code>&lt;div&gt;</code> 写了没写 <code>&lt;/div&gt;</code>，后面全乱套</li>
+<li>中文符号：<code>；</code>、<code>（）</code>、<code>“”</code> 混进代码 → 直接失效</li>
+<li><code>&lt;img&gt;</code> <code>&lt;br&gt;</code> <code>&lt;hr&gt;</code> <code>&lt;input&gt;</code> 是单标签，不要写成 <code>&lt;/img&gt;</code></li>
+<li><code>name</code> 忘了写 → 表单提交后端收不到值</li>
+<li>文件上传忘了 <code>enctype=&quot;multipart/form-data&quot;</code></li>
+<li>一个页面写了多个 <code>&lt;h1&gt;</code></li>
+<li><code>class</code> 属性不加点，CSS 里 <code>.box</code> 才加点</li>
+<li><code>&lt;title&gt;</code> 忘了写，标签页显示成路径</li>
+<li>编码不是 UTF-8，中文乱码</li>
+</ol>
+<hr>
+<h2 id="十五、速记口诀"><a href="#十五、速记口诀" class="headerlink" title="十五、速记口诀"></a>十五、速记口诀</h2><blockquote>
+<p>DOCTYPE 打头，html 包一切；head 放配置，body 放内容。 块级占一行，行内不设宽；img input 是行内块。 注释藏信息，hidden 能篡改，action 露接口。 前端所见皆可改，校验必须在服务端。</p>
+</blockquote>
+<hr>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/11/03/hello-world/" data-id="cmw1vgkrf0005csulfo6v1ibr" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2026/11/14/HTML%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/" data-id="cmwrbde4h0003i8ul8eeebz40" data-title="HTML 知识总结（网安视角）" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web%E5%AE%89%E5%85%A8/" rel="tag">Web安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
     </footer>
   </div>
   
@@ -229,9 +851,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E5%AE%89%E5%85%A8/" rel="tag">Web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flex/" rel="tag">Flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E5%AE%89%E5%85%A8/" rel="tag">Web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
     </div>
   </div>
 
@@ -239,18 +861,18 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">C语言</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Web%E5%AE%89%E5%85%A8/" style="font-size: 10px;">Web安全</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a>
+      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/Flex/" style="font-size: 10px;">Flex</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Web%E5%AE%89%E5%85%A8/" style="font-size: 20px;">Web安全</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">November 2026</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">十一月 2026</a></li></ul>
     </div>
   </div>
 
@@ -258,20 +880,20 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2026/11/03/Linux-vim-HelloWorld/">Linux 使用 vim 输出 Hello World</a>
+            <a href="/2026/11/14/CSS%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E5%90%AB%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/">CSS 知识总结（含网安视角）</a>
           </li>
         
           <li>
-            <a href="/2026/11/03/HTML-CSS-%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">HTML &amp; CSS 学习总结</a>
+            <a href="/2026/11/14/Flex%20%E5%B8%83%E5%B1%80%E9%80%9F%E8%AE%B0%E7%AC%94%E8%AE%B0/">Flex 布局速记笔记</a>
           </li>
         
           <li>
-            <a href="/2026/11/03/hello-world/">Hello World</a>
+            <a href="/2026/11/14/HTML%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/">HTML 知识总结（网安视角）</a>
           </li>
         
       </ul>
@@ -287,7 +909,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2026 John Doe<br>
+      &copy; 2026 Release-lyx<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
