@@ -78,9 +78,94 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-CSS 知识总结（含网安视角）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-CTF复盘.md/LSB隐写-CTF复盘" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2026/11/14/CSS%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E5%90%AB%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/" class="article-date">
+    <a href="/2026/11/24/CTF%E5%A4%8D%E7%9B%98.md/LSB%E9%9A%90%E5%86%99-CTF%E5%A4%8D%E7%9B%98/" class="article-date">
+  <time class="dt-published" datetime="2026-11-24T03:00:00.000Z" itemprop="datePublished">2026-11-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BD%91%E5%AE%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">网安学习笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/11/24/CTF%E5%A4%8D%E7%9B%98.md/LSB%E9%9A%90%E5%86%99-CTF%E5%A4%8D%E7%9B%98/">CTF复盘｜RGB联合LSB隐写（二维码坑点总结）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="题目类型"><a href="#题目类型" class="headerlink" title="题目类型"></a>题目类型</h2><p>MISC｜RGB三通道联合LSB隐写 + 残缺二维码</p>
+<h2 id="✅-正确提取参数（你全部选对了）"><a href="#✅-正确提取参数（你全部选对了）" class="headerlink" title="✅ 正确提取参数（你全部选对了）"></a>✅ 正确提取参数（你全部选对了）</h2><ul>
+<li>通道：Red + Green + Blue</li>
+<li>提取位：Bit0（最低位LSB）</li>
+<li>扫描顺序：Row（按行）</li>
+<li>Bit顺序：LSB first</li>
+<li>交织模式：RGB</li>
+</ul>
+<h2 id="🎯-预期结果"><a href="#🎯-预期结果" class="headerlink" title="🎯 预期结果"></a>🎯 预期结果</h2><p>提取出来的比特流本质就是一张完整的正方形二维码，三个角落都有定位方块，扫码直接得到flag。</p>
+<h2 id="🧩-卡关核心原因（最关键考点）"><a href="#🧩-卡关核心原因（最关键考点）" class="headerlink" title="🧩 卡关核心原因（最关键考点）"></a>🧩 卡关核心原因（最关键考点）</h2><p>网上早年的Writeup，选手使用的是<strong>本地Java原版 StegSolve.jar</strong></p>
+<blockquote>
+<p>原版特点：预览、保存图片时，会按照真实像素数量渲染，不会乱改图片宽高，直接得到完整二维码</p>
+</blockquote>
+<p>👉 你使用的<strong>网页复刻版工具存在缺陷</strong></p>
+<ol>
+<li>导出图片时自动生成PNG，IHDR高度字段被写小 → 图片下半部分被截断，右下角二维码定位方块消失，无法识别</li>
+<li>尝试下载Raw原始二进制数据时，数据量大导致浏览器内存溢出，页面直接崩溃</li>
+</ol>
+<h2 id="✅-两种可行的完整解法（以后环境合适可以回来复现）"><a href="#✅-两种可行的完整解法（以后环境合适可以回来复现）" class="headerlink" title="✅ 两种可行的完整解法（以后环境合适可以回来复现）"></a>✅ 两种可行的完整解法（以后环境合适可以回来复现）</h2><ol>
+<li>本地环境：安装Java，运行原版 <code>StegSolve.jar</code>，参数相同，直接预览完整二维码</li>
+<li>脚本方案：成功下载Raw字节流后，用Python手动指定正方形宽高，重新渲染图片，避开错误PNG头</li>
+</ol>
+<h2 id="💡-学到的经验"><a href="#💡-学到的经验" class="headerlink" title="💡 学到的经验"></a>💡 学到的经验</h2><ol>
+<li>LSB隐写，支持多通道（R+G+B）联合提取比特</li>
+<li>⚠️ 非常重要：<strong>网页版工具 ≠ 原版StegSolve</strong>，导出图像行为会有差异，很容易出现截断、文件损坏等诡异bug</li>
+<li>二维码识别的必要条件：必须集齐<strong>3个角落的定位方块</strong>，缺一个就会识别失败</li>
+</ol>
+<hr>
+<h2 id="这道题完整复盘笔记（直接归档）"><a href="#这道题完整复盘笔记（直接归档）" class="headerlink" title="这道题完整复盘笔记（直接归档）"></a>这道题完整复盘笔记（直接归档）</h2><h3 id="题目考点"><a href="#题目考点" class="headerlink" title="题目考点"></a>题目考点</h3><ul>
+<li>类型：MISC 图像隐写，<strong>RGB 三通道联合 LSB 隐写</strong></li>
+<li>提取参数：R、G、B 三个通道的最低位 Bit0；扫描顺序 Row；LSB‑first；交织 RGB</li>
+</ul>
+<h3 id="坑点（就是卡你的地方）"><a href="#坑点（就是卡你的地方）" class="headerlink" title="坑点（就是卡你的地方）"></a>坑点（就是卡你的地方）</h3><ol>
+<li>老 writeup 全部基于本地 Java 版 StegSolve，预览 / 保存不会截断图像</li>
+<li>现在的网页复现工具存在 bug：导出 PNG 时自动写入错误的 IHDR 高度，图片截断，右下角二维码定位块消失，无法扫码</li>
+<li>尝试下载 Raw 原始字节流的时候，数据量过大，浏览器内存爆满 → 页面直接崩溃加载失败</li>
+</ol>
+<h3 id="两种正确解法（以后环境到位可以回来复现拿-flag）"><a href="#两种正确解法（以后环境到位可以回来复现拿-flag）" class="headerlink" title="两种正确解法（以后环境到位可以回来复现拿 flag）"></a>两种正确解法（以后环境到位可以回来复现拿 flag）</h3><ol>
+<li>本地运行原版 StegSolve.jar（需要 Java 环境），提取之后直接预览，完整二维码直接扫码</li>
+<li>拿到 Raw bytes 原始数据流，用 Python 手动指定正方形宽高，重新渲染图片，绕开自动生成的坏 PNG 头</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/11/24/CTF%E5%A4%8D%E7%9B%98.md/LSB%E9%9A%90%E5%86%99-CTF%E5%A4%8D%E7%9B%98/" data-id="cmwu4rvhs0004n0ul684jajpw" data-title="CTF复盘｜RGB联合LSB隐写（二维码坑点总结）" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LSB%E9%9A%90%E5%86%99/" rel="tag">LSB隐写</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MISC/" rel="tag">MISC</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-CTF复盘.md/CSS 知识总结（含网安视角）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/11/14/CTF%E5%A4%8D%E7%9B%98.md/CSS%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E5%90%AB%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/" class="article-date">
   <time class="dt-published" datetime="2026-11-13T16:00:00.000Z" itemprop="datePublished">2026-11-14</time>
 </a>
     
@@ -92,7 +177,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/11/14/CSS%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E5%90%AB%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/">CSS 知识总结（含网安视角）</a>
+      <a class="p-name article-title" href="/2026/11/14/CTF%E5%A4%8D%E7%9B%98.md/CSS%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E5%90%AB%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/">CSS 知识总结（含网安视角）</a>
     </h1>
   
 
@@ -297,7 +382,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/11/14/CSS%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E5%90%AB%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/" data-id="cmwrbg2ph0000loulhuele0gd" data-title="CSS 知识总结（含网安视角）" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2026/11/14/CTF%E5%A4%8D%E7%9B%98.md/CSS%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E5%90%AB%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/" data-id="cmwu4rvhk0000n0ul782u1nov" data-title="CSS 知识总结（含网安视角）" class="article-share-link">分享</a>
       
       
       
@@ -311,9 +396,9 @@
 
 
   
-    <article id="post-Flex 布局速记笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-CTF复盘.md/HTML 知识总结（网安视角）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2026/11/14/Flex%20%E5%B8%83%E5%B1%80%E9%80%9F%E8%AE%B0%E7%AC%94%E8%AE%B0/" class="article-date">
+    <a href="/2026/11/14/CTF%E5%A4%8D%E7%9B%98.md/HTML%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/" class="article-date">
   <time class="dt-published" datetime="2026-11-13T16:00:00.000Z" itemprop="datePublished">2026-11-14</time>
 </a>
     
@@ -325,109 +410,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/11/14/Flex%20%E5%B8%83%E5%B1%80%E9%80%9F%E8%AE%B0%E7%AC%94%E8%AE%B0/">Flex 布局速记笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>核心：给父盒子加 <code>display: flex;</code>，<strong>控制子元素</strong>的排列，分为【主轴】和【侧轴（交叉轴）】 默认：主轴=水平（从左→右），侧轴=垂直（从上→下）</p>
-</blockquote>
-<h2 id="一、父容器（加在父盒子上）"><a href="#一、父容器（加在父盒子上）" class="headerlink" title="一、父容器（加在父盒子上）"></a>一、父容器（加在父盒子上）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.father &#123;</span><br><span class="line">  display: flex; /* 开启flex布局，必写 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-flex-direction-👉-修改主轴方向"><a href="#1-flex-direction-👉-修改主轴方向" class="headerlink" title="1. flex-direction 👉 修改主轴方向"></a>1. flex-direction 👉 修改主轴方向</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">flex-direction: row;          /* 默认，主轴水平，左→右 */</span><br><span class="line">flex-direction: row-reverse; /* 水平反向，右→左 */</span><br><span class="line">flex-direction: column;      /* 主轴垂直，上→下 */</span><br><span class="line">flex-direction: column-reverse; /* 垂直反向，下→上 */</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-flex-wrap-👉-是否换行（重点！）"><a href="#2-flex-wrap-👉-是否换行（重点！）" class="headerlink" title="2. flex-wrap 👉 是否换行（重点！）"></a>2. flex-wrap 👉 是否换行（重点！）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flex-wrap: nowrap; /* 默认：不换行，子盒子会被挤压缩小 */</span><br><span class="line">flex-wrap: wrap;   /* 空间不够就自动换行（你抖音案例用的这个） */</span><br><span class="line">flex-wrap: wrap-reverse; /* 换行并且行颠倒 */</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-justify-content-👉-主轴对齐（最常用）"><a href="#3-justify-content-👉-主轴对齐（最常用）" class="headerlink" title="3. justify-content 👉 主轴对齐（最常用）"></a>3. justify-content 👉 主轴对齐（最常用）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">justify-content: flex-start;    /* 默认：靠左 */</span><br><span class="line">justify-content: flex-end;      /* 靠右 */</span><br><span class="line">justify-content: center;       /* 居中 */</span><br><span class="line">justify-content: space-between;/* 两端贴边，中间空隙平分（高频！） */</span><br><span class="line">justify-content: space-around;   /* 每个盒子左右都有空隙，两端空隙是中间一半 */</span><br><span class="line">justify-content: space-evenly;  /* 所有空隙（包含左右两边）大小完全相等 */</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-align-items-👉-侧轴对齐（单行的时候用！）"><a href="#4-align-items-👉-侧轴对齐（单行的时候用！）" class="headerlink" title="4. align-items 👉 侧轴对齐（单行的时候用！）"></a>4. align-items 👉 侧轴对齐（单行的时候用！）</h3><blockquote>
-<p>单行、没有换行，用这个</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">align-items: flex-start; /* 靠上 */</span><br><span class="line">align-items: flex-end;   /* 靠下 */</span><br><span class="line">align-items: center;     /* 垂直居中（超级常用） */</span><br><span class="line">align-items: stretch;     /* 默认，子盒子高度拉伸填满父盒子 */</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-align-content-👉-多行侧轴对齐（⚠️必须配合-wrap-换行！）"><a href="#5-align-content-👉-多行侧轴对齐（⚠️必须配合-wrap-换行！）" class="headerlink" title="5. align-content 👉 多行侧轴对齐（⚠️必须配合 wrap 换行！）"></a>5. align-content 👉 多行侧轴对齐（⚠️必须配合 wrap 换行！）</h3><blockquote>
-<p>只有子元素换行了、出现多行，这条才生效！单行无效</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">align-content: flex-start; /* 多行整体靠上 */</span><br><span class="line">align-content: flex-end;   /* 多行整体靠下 */</span><br><span class="line">align-content: center;     /* 多行整体垂直居中 */</span><br><span class="line">align-content: space-between; /* 多行上下贴边，行之间空隙均分 */</span><br><span class="line">align-content: space-around;</span><br><span class="line">align-content: space-evenly;</span><br><span class="line">align-content: stretch;    /* 默认拉伸 */</span><br></pre></td></tr></table></figure>
-
-<h2 id="二、子元素属性（写在子div上）"><a href="#二、子元素属性（写在子div上）" class="headerlink" title="二、子元素属性（写在子div上）"></a>二、子元素属性（写在子div上）</h2><h3 id="1-flex-弹性伸缩（简写）"><a href="#1-flex-弹性伸缩（简写）" class="headerlink" title="1. flex 弹性伸缩（简写）"></a>1. flex 弹性伸缩（简写）</h3><p><code>flex: 1;</code> 👉 平分剩余空间，自适应宽度（卡片均分神器）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flex: 数字;  /* flex: 1 代表占1份 */</span><br><span class="line">/* 完整展开：flex: flex-grow flex-shrink flex-basis; */</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>flex-grow</code>：放大比例，默认0，有多余空间才放大</li>
-<li><code>flex-shrink</code>：缩小比例，默认1，空间不够会缩小</li>
-<li><code>flex-basis</code>：基础宽度，默认auto</li>
-</ul>
-<h3 id="2-align-self-👉-单独控制某一个子盒子侧轴对齐"><a href="#2-align-self-👉-单独控制某一个子盒子侧轴对齐" class="headerlink" title="2. align-self 👉 单独控制某一个子盒子侧轴对齐"></a>2. align-self 👉 单独控制某一个子盒子侧轴对齐</h3><p>可以不和其他子盒子保持一致，单独设置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">align-self: center;</span><br><span class="line">align-self: flex-start;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-order-👉-排序"><a href="#3-order-👉-排序" class="headerlink" title="3. order 👉 排序"></a>3. order 👉 排序</h3><p><code>order: 数字;</code> 默认0，数字越小，排得越靠前（可以不改HTML，调换顺序）</p>
-<h2 id="三、高频组合模板（直接抄作业）"><a href="#三、高频组合模板（直接抄作业）" class="headerlink" title="三、高频组合模板（直接抄作业）"></a>三、高频组合模板（直接抄作业）</h2><ol>
-<li>水平+垂直居中（万能居中）</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  align-items: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>一行多个盒子，左右贴边，中间自动空隙（抖音方案板块）</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: space-between;</span><br><span class="line">  flex-wrap: wrap; /* 屏幕小自动换行 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>垂直方向排列、居中</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  flex-direction: column;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  align-items: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="四、易错踩坑清单（你之前踩过的！）"><a href="#四、易错踩坑清单（你之前踩过的！）" class="headerlink" title="四、易错踩坑清单（你之前踩过的！）"></a>四、易错踩坑清单（你之前踩过的！）</h2><ol>
-<li>✅ <code>justify-content</code> 管主轴；<code>align-items</code> 管单行侧轴；<code>align-content</code> 只管多行（wrap换行后）</li>
-<li>✅ flex 布局<strong>子元素默认不换行</strong>，想换行一定要加 <code>flex-wrap: wrap;</code></li>
-<li>✅ 父盒子写 <code>display:flex</code>，属性是给父的；<code>flex:1</code>、<code>order</code> 这些是给子盒子</li>
-<li>✅ 通配符重置样式别漏 <code>*</code></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  margin: 0;</span><br><span class="line">  padding: 0;</span><br><span class="line">  box-sizing: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li>✅ 标签class要对应，写了<code>.box</code>样式，body里必须有 <code>&lt;div class=&quot;box&quot;&gt;</code>，不然看不到盒子</li>
-</ol>
-<h2 id="五、一句话速记口诀"><a href="#五、一句话速记口诀" class="headerlink" title="五、一句话速记口诀"></a>五、一句话速记口诀</h2><blockquote>
-<p>父开flex，定主轴，主轴justify，单行align-items，多行align-content； 子元素flex用来分空间，order调顺序，align-self单独改。</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/11/14/Flex%20%E5%B8%83%E5%B1%80%E9%80%9F%E8%AE%B0%E7%AC%94%E8%AE%B0/" data-id="cmwrbg2pm0001loul9wuidsbw" data-title="Flex 布局速记笔记" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flex/" rel="tag">Flex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web%E5%AE%89%E5%85%A8/" rel="tag">Web安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-HTML 知识总结（网安视角）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/11/14/HTML%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/" class="article-date">
-  <time class="dt-published" datetime="2026-11-13T16:00:00.000Z" itemprop="datePublished">2026-11-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/11/14/HTML%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/">HTML 知识总结（网安视角）</a>
+      <a class="p-name article-title" href="/2026/11/14/CTF%E5%A4%8D%E7%9B%98.md/HTML%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/">HTML 知识总结（网安视角）</a>
     </h1>
   
 
@@ -826,11 +809,113 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2026/11/14/HTML%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/" data-id="cmwrbg2pn0003loul81xihesx" data-title="HTML 知识总结（网安视角）" class="article-share-link">分享</a>
+      <a data-url="http://example.com/2026/11/14/CTF%E5%A4%8D%E7%9B%98.md/HTML%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/" data-id="cmwu4rvhq0001n0ulc2tv6s5p" data-title="HTML 知识总结（网安视角）" class="article-share-link">分享</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web%E5%AE%89%E5%85%A8/" rel="tag">Web安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-CTF复盘.md/Flex 布局速记笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/11/14/CTF%E5%A4%8D%E7%9B%98.md/Flex%20%E5%B8%83%E5%B1%80%E9%80%9F%E8%AE%B0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2026-11-13T16:00:00.000Z" itemprop="datePublished">2026-11-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/11/14/CTF%E5%A4%8D%E7%9B%98.md/Flex%20%E5%B8%83%E5%B1%80%E9%80%9F%E8%AE%B0%E7%AC%94%E8%AE%B0/">Flex 布局速记笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>核心：给父盒子加 <code>display: flex;</code>，<strong>控制子元素</strong>的排列，分为【主轴】和【侧轴（交叉轴）】 默认：主轴=水平（从左→右），侧轴=垂直（从上→下）</p>
+</blockquote>
+<h2 id="一、父容器（加在父盒子上）"><a href="#一、父容器（加在父盒子上）" class="headerlink" title="一、父容器（加在父盒子上）"></a>一、父容器（加在父盒子上）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.father &#123;</span><br><span class="line">  display: flex; /* 开启flex布局，必写 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-flex-direction-👉-修改主轴方向"><a href="#1-flex-direction-👉-修改主轴方向" class="headerlink" title="1. flex-direction 👉 修改主轴方向"></a>1. flex-direction 👉 修改主轴方向</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">flex-direction: row;          /* 默认，主轴水平，左→右 */</span><br><span class="line">flex-direction: row-reverse; /* 水平反向，右→左 */</span><br><span class="line">flex-direction: column;      /* 主轴垂直，上→下 */</span><br><span class="line">flex-direction: column-reverse; /* 垂直反向，下→上 */</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-flex-wrap-👉-是否换行（重点！）"><a href="#2-flex-wrap-👉-是否换行（重点！）" class="headerlink" title="2. flex-wrap 👉 是否换行（重点！）"></a>2. flex-wrap 👉 是否换行（重点！）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flex-wrap: nowrap; /* 默认：不换行，子盒子会被挤压缩小 */</span><br><span class="line">flex-wrap: wrap;   /* 空间不够就自动换行（你抖音案例用的这个） */</span><br><span class="line">flex-wrap: wrap-reverse; /* 换行并且行颠倒 */</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-justify-content-👉-主轴对齐（最常用）"><a href="#3-justify-content-👉-主轴对齐（最常用）" class="headerlink" title="3. justify-content 👉 主轴对齐（最常用）"></a>3. justify-content 👉 主轴对齐（最常用）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">justify-content: flex-start;    /* 默认：靠左 */</span><br><span class="line">justify-content: flex-end;      /* 靠右 */</span><br><span class="line">justify-content: center;       /* 居中 */</span><br><span class="line">justify-content: space-between;/* 两端贴边，中间空隙平分（高频！） */</span><br><span class="line">justify-content: space-around;   /* 每个盒子左右都有空隙，两端空隙是中间一半 */</span><br><span class="line">justify-content: space-evenly;  /* 所有空隙（包含左右两边）大小完全相等 */</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-align-items-👉-侧轴对齐（单行的时候用！）"><a href="#4-align-items-👉-侧轴对齐（单行的时候用！）" class="headerlink" title="4. align-items 👉 侧轴对齐（单行的时候用！）"></a>4. align-items 👉 侧轴对齐（单行的时候用！）</h3><blockquote>
+<p>单行、没有换行，用这个</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">align-items: flex-start; /* 靠上 */</span><br><span class="line">align-items: flex-end;   /* 靠下 */</span><br><span class="line">align-items: center;     /* 垂直居中（超级常用） */</span><br><span class="line">align-items: stretch;     /* 默认，子盒子高度拉伸填满父盒子 */</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-align-content-👉-多行侧轴对齐（⚠️必须配合-wrap-换行！）"><a href="#5-align-content-👉-多行侧轴对齐（⚠️必须配合-wrap-换行！）" class="headerlink" title="5. align-content 👉 多行侧轴对齐（⚠️必须配合 wrap 换行！）"></a>5. align-content 👉 多行侧轴对齐（⚠️必须配合 wrap 换行！）</h3><blockquote>
+<p>只有子元素换行了、出现多行，这条才生效！单行无效</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">align-content: flex-start; /* 多行整体靠上 */</span><br><span class="line">align-content: flex-end;   /* 多行整体靠下 */</span><br><span class="line">align-content: center;     /* 多行整体垂直居中 */</span><br><span class="line">align-content: space-between; /* 多行上下贴边，行之间空隙均分 */</span><br><span class="line">align-content: space-around;</span><br><span class="line">align-content: space-evenly;</span><br><span class="line">align-content: stretch;    /* 默认拉伸 */</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、子元素属性（写在子div上）"><a href="#二、子元素属性（写在子div上）" class="headerlink" title="二、子元素属性（写在子div上）"></a>二、子元素属性（写在子div上）</h2><h3 id="1-flex-弹性伸缩（简写）"><a href="#1-flex-弹性伸缩（简写）" class="headerlink" title="1. flex 弹性伸缩（简写）"></a>1. flex 弹性伸缩（简写）</h3><p><code>flex: 1;</code> 👉 平分剩余空间，自适应宽度（卡片均分神器）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flex: 数字;  /* flex: 1 代表占1份 */</span><br><span class="line">/* 完整展开：flex: flex-grow flex-shrink flex-basis; */</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>flex-grow</code>：放大比例，默认0，有多余空间才放大</li>
+<li><code>flex-shrink</code>：缩小比例，默认1，空间不够会缩小</li>
+<li><code>flex-basis</code>：基础宽度，默认auto</li>
+</ul>
+<h3 id="2-align-self-👉-单独控制某一个子盒子侧轴对齐"><a href="#2-align-self-👉-单独控制某一个子盒子侧轴对齐" class="headerlink" title="2. align-self 👉 单独控制某一个子盒子侧轴对齐"></a>2. align-self 👉 单独控制某一个子盒子侧轴对齐</h3><p>可以不和其他子盒子保持一致，单独设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">align-self: center;</span><br><span class="line">align-self: flex-start;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-order-👉-排序"><a href="#3-order-👉-排序" class="headerlink" title="3. order 👉 排序"></a>3. order 👉 排序</h3><p><code>order: 数字;</code> 默认0，数字越小，排得越靠前（可以不改HTML，调换顺序）</p>
+<h2 id="三、高频组合模板（直接抄作业）"><a href="#三、高频组合模板（直接抄作业）" class="headerlink" title="三、高频组合模板（直接抄作业）"></a>三、高频组合模板（直接抄作业）</h2><ol>
+<li>水平+垂直居中（万能居中）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  align-items: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>一行多个盒子，左右贴边，中间自动空隙（抖音方案板块）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  justify-content: space-between;</span><br><span class="line">  flex-wrap: wrap; /* 屏幕小自动换行 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>垂直方向排列、居中</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">  display: flex;</span><br><span class="line">  flex-direction: column;</span><br><span class="line">  justify-content: center;</span><br><span class="line">  align-items: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、易错踩坑清单（你之前踩过的！）"><a href="#四、易错踩坑清单（你之前踩过的！）" class="headerlink" title="四、易错踩坑清单（你之前踩过的！）"></a>四、易错踩坑清单（你之前踩过的！）</h2><ol>
+<li>✅ <code>justify-content</code> 管主轴；<code>align-items</code> 管单行侧轴；<code>align-content</code> 只管多行（wrap换行后）</li>
+<li>✅ flex 布局<strong>子元素默认不换行</strong>，想换行一定要加 <code>flex-wrap: wrap;</code></li>
+<li>✅ 父盒子写 <code>display:flex</code>，属性是给父的；<code>flex:1</code>、<code>order</code> 这些是给子盒子</li>
+<li>✅ 通配符重置样式别漏 <code>*</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  margin: 0;</span><br><span class="line">  padding: 0;</span><br><span class="line">  box-sizing: border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>✅ 标签class要对应，写了<code>.box</code>样式，body里必须有 <code>&lt;div class=&quot;box&quot;&gt;</code>，不然看不到盒子</li>
+</ol>
+<h2 id="五、一句话速记口诀"><a href="#五、一句话速记口诀" class="headerlink" title="五、一句话速记口诀"></a>五、一句话速记口诀</h2><blockquote>
+<p>父开flex，定主轴，主轴justify，单行align-items，多行align-content； 子元素flex用来分空间，order调顺序，align-self单独改。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/11/14/CTF%E5%A4%8D%E7%9B%98.md/Flex%20%E5%B8%83%E5%B1%80%E9%80%9F%E8%AE%B0%E7%AC%94%E8%AE%B0/" data-id="cmwu4rvhr0003n0ul5y8m7ij5" data-title="Flex 布局速记笔记" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flex/" rel="tag">Flex</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web%E5%AE%89%E5%85%A8/" rel="tag">Web安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
 
     </footer>
   </div>
@@ -847,13 +932,20 @@
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E5%AE%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">网安学习笔记</a></li></ul>
+    </div>
+  </div>
+
 
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flex/" rel="tag">Flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E5%AE%89%E5%85%A8/" rel="tag">Web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/" rel="tag">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flex/" rel="tag">Flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LSB%E9%9A%90%E5%86%99/" rel="tag">LSB隐写</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MISC/" rel="tag">MISC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web%E5%AE%89%E5%85%A8/" rel="tag">Web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
     </div>
   </div>
 
@@ -863,7 +955,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/Flex/" style="font-size: 10px;">Flex</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/Web%E5%AE%89%E5%85%A8/" style="font-size: 20px;">Web安全</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a>
+      <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/CTF/" style="font-size: 10px;">CTF</a> <a href="/tags/Flex/" style="font-size: 10px;">Flex</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/LSB%E9%9A%90%E5%86%99/" style="font-size: 10px;">LSB隐写</a> <a href="/tags/MISC/" style="font-size: 10px;">MISC</a> <a href="/tags/Web%E5%AE%89%E5%85%A8/" style="font-size: 20px;">Web安全</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 20px;">前端</a>
     </div>
   </div>
 
@@ -885,15 +977,19 @@
       <ul>
         
           <li>
-            <a href="/2026/11/14/CSS%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E5%90%AB%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/">CSS 知识总结（含网安视角）</a>
+            <a href="/2026/11/24/CTF%E5%A4%8D%E7%9B%98.md/LSB%E9%9A%90%E5%86%99-CTF%E5%A4%8D%E7%9B%98/">CTF复盘｜RGB联合LSB隐写（二维码坑点总结）</a>
           </li>
         
           <li>
-            <a href="/2026/11/14/Flex%20%E5%B8%83%E5%B1%80%E9%80%9F%E8%AE%B0%E7%AC%94%E8%AE%B0/">Flex 布局速记笔记</a>
+            <a href="/2026/11/14/CTF%E5%A4%8D%E7%9B%98.md/CSS%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E5%90%AB%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/">CSS 知识总结（含网安视角）</a>
           </li>
         
           <li>
-            <a href="/2026/11/14/HTML%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/">HTML 知识总结（网安视角）</a>
+            <a href="/2026/11/14/CTF%E5%A4%8D%E7%9B%98.md/HTML%20%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93%EF%BC%88%E7%BD%91%E5%AE%89%E8%A7%86%E8%A7%92%EF%BC%89/">HTML 知识总结（网安视角）</a>
+          </li>
+        
+          <li>
+            <a href="/2026/11/14/CTF%E5%A4%8D%E7%9B%98.md/Flex%20%E5%B8%83%E5%B1%80%E9%80%9F%E8%AE%B0%E7%AC%94%E8%AE%B0/">Flex 布局速记笔记</a>
           </li>
         
       </ul>
